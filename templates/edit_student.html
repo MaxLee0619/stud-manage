@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Student Info Modify</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+</head>
+<body>
+    <h1>Student Info Modify</h1>
+    <div class="container">
+        <form method="POST" action="{{ url_for('edit_student', student_id=student['_id']) }}" enctype="multipart/form-data">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name">
+            <br>
+            <label for="image">Image</label>
+            <input type="file" name="image" id="image">
+            <br>
+            <label for="age">Age</label>
+            <input type="number" name="age" id="age">
+            <br>
+            <label for="gender">Gender</label>
+            <input type="text" name="gender" id="gender">
+            <br>
+            <label for="active">Active</label>
+            <select name="active" id="active">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <br>
+            <label for="is_deleted">Is Deleted</label>
+            <select name="is_deleted" id="is_deleted">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <br>
+            <button type="submit">Submit</button>
+            <a href="{{ url_for('delete_student', student_id=student['_id']) }}"><button type="button">Delete Student</button></a>
+        </form>
+    </div>
+</body>
+
+</html>

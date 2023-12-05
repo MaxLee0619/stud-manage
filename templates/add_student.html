@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Task for Student</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+</head>
+<body>
+    <h1>Create Student</h1>
+    <div class="container">
+    <form method="POST" action="{{ url_for('add_student') }}" enctype="multipart/form-data">
+        <label for="student-id">Student ID</label>
+        <input type="text" name="student-id" id="student-id">
+        <br>
+        <label for="name">Student Name</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <label for="age">Age</label>
+        <input type="number" name="age" id="age">
+        <br>
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <br>
+        <label for="image">Profile Image:</label>
+        <input type="file" name="image" accept="image/*">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+</body>
+</html>

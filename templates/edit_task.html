@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Task Modify</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+</head>
+
+<body>
+    <h1>Task Modify</h1>
+    <div class="container">
+        <form method="POST" action="{{ url_for('edit_task', task_id=task['_id']) }}" enctype="multipart/form-data">
+            <label for="task-name">Task Name</label>
+            <input type="text" name="task-name" id="task-name">
+            <br>
+            <label for="score">Score</label>
+            <input type="number" name="score" id="score">
+            <br>
+            <label for="is_deleted">Is Deleted</label>
+            <select name="is_deleted" id="is_deleted">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+
+        <form method="POST" action="{{ url_for('delete_task', task_id=task['task_id']) }}">
+            <button type="submit">Delete Task</button>
+        </form>
+    </div>
+</body>
+
+</html>

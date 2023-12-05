@@ -1,0 +1,32 @@
+
+.container {
+            width: 400px;
+            margin: 0 auto;
+            border: 2px solid #ccc;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+        input, select {
+            width: 200px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 20px;
+            margin-top: 10px;
+
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }

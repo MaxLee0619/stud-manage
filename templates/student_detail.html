@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Detail</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            width: 500px;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 20px;
+            margin-top: 10px;
+            width: 80px;
+            float: right;
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+        .profile{
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Detail</h1>
+        <img src="/{{ student['image_path'] }}" alt="Student Image" width="200" height="200" class="profile">
+        <br>
+        <table class="table table-striped">
+            <tr>
+                <td>Student ID</td>
+                <td>{{ student["_id"] }}</td>
+            </tr>
+            <tr>
+                <td>Student Name</td>
+                <td>{{ student["name"] }}</td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td>{{ student["age"] }}</td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>{{ student["gender"] }}</td>
+            </tr>
+            <tr>
+                <td>Active</td>
+                <td>{{ student["active"] }}</td>
+            </tr>
+            <tr>
+                <td>Last Update</td>
+                <td>{{ student["last_updated"].strftime("%d-%m-%y") }}</td>
+            </tr>
+            <tr>
+                <td>Last Update by</td>
+                <td>{{ student["updated_by"] }}</td>
+            </tr>
+        </table>
+        <a href="{{url_for('edit_student', student_id=student['_id'])}}"><button>Edit</button></a>
+    </div>
+    <br>
+    <div>
+        <div class="container">
+        <h2>Student Task</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Task ID</th>
+                <th>Task Name</th>
+                <th>Score</th>
+                <th>Is Delete</th>
+                <th>Create</th>
+                <th>Created by</th>
+                <th>Last Update</th>
+                <th>Last Update by</th>
+                <th>Action</th>
+            </tr>
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ task["_id"] }}</td>
+                    <td>{{ task["task_name"] }}</td>
+                    <td>{{ task["score"] }}</td>
+                    <td>{{ task["is_deleted"] }}</td>
+                    <td>{{ task["task_created"].strftime("%d-%m-%y") }}</td>
+                    <td>{{ task["task_created_by"] }}</td>
+                    <td>{{ task["task_last_updated"].strftime("%d-%m-%y") }}</td>
+                    <td>{{ task["task_updated_by"] }}</td>
+                    <td>
+                        <a href="{{url_for('edit_task', task_id=task["_id"])}}"><button>Edit</button></a>
+                        <a href="{{url_for('delete_task', task_id=task["_id"])}}"><button>Delete</button></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

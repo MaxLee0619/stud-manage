@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>Add Task</h1>
+    <div class="container">
+    <form method="POST" enctype="multipart/form-data" action="{{ url_for('add_task') }}">
+        <label for="task-id">Task ID:</label>
+        <input type="text" name="task-id" required><br>
+
+        <label for="task-name">Task Name:</label>
+        <input type="text" name="task-name" required><br>
+
+        <label for="score">Score:</label>
+        <input type="text" name="score" required><br>
+
+        <label for="student-id">Student ID:</label>
+        <select name="student-id" required>
+            {% for student_id in student_ids %}
+                <option value="{{ student_id }}">{{ student_id }}</option>
+            {% endfor %}
+        </select><br>
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+</body>
+</html>
